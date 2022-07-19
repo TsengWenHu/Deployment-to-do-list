@@ -4,7 +4,6 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const _ = require("lodash");
-const myModule = require("./myOwnModule")
 
 const app = express();
 
@@ -14,7 +13,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 // connect to mongoDB Atlas
-mongoose.connect(myModule.accessURL(), {useNewUrlParser: true});
+mongoose.connect(process.env.mongooseURL, {useNewUrlParser: true});
 
 const itemsSchema = {
   name: String
